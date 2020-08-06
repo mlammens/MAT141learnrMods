@@ -1,0 +1,26 @@
+﻿date,condition,site,vegetation_type,replicate,phosphorus_lbacre
+4/24/18,dry,townhouse,mixed forest,1,10
+4/24/18,dry,townhouse,mixed forest,2,25
+4/24/18,dry,townhouse,mixed forest,3,75
+4/24/18,dry,townhouse,mixed forest,4,25
+4/24/18,dry,townhouse,mixed forest,5,25
+4/24/18,dry,osa_top,shrub / grassland,1,75
+4/24/18,dry,osa_top,shrub / grassland,2,75
+4/24/18,dry,osa_top,shrub / grassland,3,25
+4/24/18,dry,osa_top,shrub / grassland,4,25
+4/24/18,dry,osa_top,shrub / grassland,5,75
+4/24/18,dry,osa_bot,shrub / grassland,1,25
+4/24/18,dry,osa_bot,shrub / grassland,2,37.5
+4/24/18,dry,osa_bot,shrub / grassland,3,10
+4/24/18,dry,osa_bot,shrub / grassland,4,25
+4/24/18,dry,osa_bot,shrub / grassland,5,10
+4/24/18,dry,wetland_top,wetland,1,10
+4/24/18,dry,wetland_top,wetland,2,5
+4/24/18,dry,wetland_top,wetland,3,10
+4/24/18,dry,wetland_top,wetland,4,10
+4/24/18,dry,wetland_top,wetland,5,10
+4/24/18,dry,wetland_bot,wetland,1,75
+4/24/18,dry,wetland_bot,wetland,2,10
+4/24/18,dry,wetland_bot,wetland,3,10
+4/24/18,dry,wetland_bot,wetland,4,5
+4/24/18,dry,wetland_bot,wetland,5,10

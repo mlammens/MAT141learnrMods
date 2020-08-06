@@ -302,6 +302,7 @@ pets[3:4]
 pets[c(1,4)]
 ```
 
+
 ## Data frames
 
 ### Reading in your own data
@@ -314,7 +315,8 @@ You can save an Excel workbook (or Numbers workbook or Google Sheet) as a CSV fi
 Let's read in the soil data from our Speed Data Science activity.
 
 ```{r soil_data}
-soil_data <- read.csv("/Users/maiellolammens/Dropbox/Pace/Teaching/MAT-141-Intro-Stats-LifeSciences/MAT-141-FA19/Data-Sets/soil_p_data.csv")
+#soil_data <- read.csv("/Users/maiellolammens/Dropbox/Pace/Teaching/MAT-141-Intro-Stats-LifeSciences/MAT-141-FA19/Data-Sets/soil_p_data.csv")
+soil_data <- read.csv(system.file("extdata", "soil_p_data.csv", package = "MAT141learnrMods"))
 ```
 
 

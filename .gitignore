@@ -2,3 +2,5 @@
 .Rhistory
 .RData
 .Ruserdata
+inst/*/*html
+inst/*/*_files/*

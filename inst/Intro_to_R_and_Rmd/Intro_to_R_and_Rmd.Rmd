@@ -1,0 +1,514 @@
+---
+title: "Introduction to R and Rmarkdown (Rmd)"
+output: learnr::tutorial
+runtime: shiny_prerendered
+description: "A brief introduction to using R and writing Rmd files."
+---
+
+```{r setup, include=FALSE}
+library(learnr)
+#knitr::opts_chunk$set(echo = FALSE)
+library(gradethis)
+
+tutorial_options(exercise.checker = gradethis::grade_learnr)
+```
+
+## Learning outcomes
+
+At the end of today's class you should be able to:
+
+* Perform basic arithmetic using R/RStudio
+* Identify the major components of the RStudio interface
+* Work with an [R Markdown](https://rmarkdown.rstudio.com/) file and use it to document a sequence of R functions
+* Read in a data set and perform basic data summary procedures in R
+
+## Why do I have to learn to program in R?
+
+In short, it's "industry standard". 
+But the longer answer has to do with replicability of data analyses.
+Documenting your analysis in R, using R scripts or Rmd files, allows you to re-run your analysis whenever the need arises, and to share your analysis workflow with others.
+
+## Difference between R and RStudio
+
+In this class, we will be working primarily in RStudio.
+So what is the difference between R and RStudio?
+R is both a programming language (specifically a statsitical analysis programming language), while RStudio is an **Integrated Development Environment**, or **IDE** for short. 
+RStudio offers a number of features, mostly related to visual presentation of information, that make writing and working with R code easier.
+
+## Getting started
+
+### Overall layout
+
+There are four panels in the RStudio interface (though you may only have three open when you first start it), each has valuable information.
+
+* Console / Terminal panel (lower-left)
+* Environment / History / Git (upper-right)
+* Files / Plots / Packages / Help (lower-right)
+* Source / Editor (upper-left)
+
+### File management
+
+Before we do anything in R/RStudio, let's make a new folder on our computers where our class data can reside.
+You can use your operating systems file manager (i.e., Finder on Mac and Windows Explorer on Windows) to created a new folder where ever suites you. 
+**Call this new folder `MAT-141-FA19`.**
+We'll use this folder/directory later when we are asked to set our 'working directory' and when we need a place to store `*.R` and `*.Rmd` files.
+
+See the screen shot below for an example of creating a new folder using Mac Finder.
+
+![](New-Folder.png)
+
+### Making an R Project
+
+Let's make a new R Project associated with your `MAT-141-FA19` directory. 
+It will become more clear why we are doing this later when we get to the Git lesson.
+To make a new project, got to the upper right-hand side of the RStudio interface, where it says **Project: (None)**.
+Click the little downward arrow, select "New Project", then select "Existing Directory" from the window that pops up. 
+Use the graphical user interface (GUI) to navigate to the `MAT-141-FA19` directory, then select "Create Project".
+
+## Getting help
+
+* **Help** panel (lower right corner)
+* `help.search`
+
+```{r}
+help.search("bar plot")
+```
+
+**Challenge**
+
+Use the `help.search` function to search for something in statistics that you think should be in R? For example, "standard deviation" or "mean".
+
+```{r help_practice, exercise=TRUE}
+
+```
+
+
+## R as calculator
+
+We can use R just like any other calculator.
+
+```{r}
+3 + 5
+```
+
+Write the R code required to add two plus two:
+
+```{r two_plus_two, exercise=TRUE}
+
+```
+
+```{r two_plus_two-check}
+grade_result(
+  pass_if(~ identical(.result, 4)),
+  fail_if(~ TRUE, "Are you using the + operator? Make sure that you are!")
+)
+
+```
+
+
+## Order of operations
+
+There's internal control for order of operations (Please Excuse My Dear Aunt Sally)
+
+```{r}
+(3 * 5) + 7
+```
+
+```{r}
+3 * 5 + 7
+```
+
+**Challenge**
+
+Write your own example where adding parentheses matters. 
+
+```{r pemdas_example, exercise=TRUE}
+
+```
+
+
+
+## Internal functions
+
+There are a ton of internal functions, and a lot of add-ons.
+Here are examples of running three different functions.
+
+```{r}
+sqrt(4)
+
+abs(-5)
+
+c(-5, 3, 7, 9, -1)
+```
+
+Identify what each of the functions above does.
+
+```{r quiz_functions, echo=FALSE}
+quiz(
+  question("What does `sqrt` do?",
+    answer("divides a number by two"),
+    answer("squirts water at a number"),
+    answer("calculates the square-root of a number", correct = TRUE),
+    answer("calculates the square of a number")
+  ),
+  question("What does `abs` do?",
+    answer("returns the absolute value of a number", correct = TRUE),
+    answer("calculates the square-root of a number"),
+    answer("nothing, as far as I can tell."),
+    answer("I don't know. Go ask your anatomy teacher what abs do.")
+  ),
+  question("What does the `c` function do? (Yes! `c` is a function!)",
+    answer("prints numbers to the output"),
+    answer("orders a set of numbers"),
+    answer("**combines** values into a vector or list of numbers", correct = TRUE),
+    answer("shortens a list of numbers")
+  )
+)
+```
+
+
+## R script file
+
+Use a script file for your work. It's easier to go back to and easy to document.
+
+**Important:** within an R file, you can use the # sign to add comments. Anything written after the # is *not* interpreted when you run the code.
+
+**Challenge**
+
+Create a new R script file in your `MAT-141-FA19` directory.
+
+***
+
+### Basic file managment in R (OPTIONAL)
+
+```{r}
+# What working directory am I in?
+getwd()
+
+# Move to a different director?
+setwd(".")
+```
+
+#### Things to cover
+
+* Navigating the file path
+* Tab completion of file paths
+* Tab completion of R commands
+
+**Challenge**
+
+* Try to auto-complete `fil`, what do you find?
+* Use the brief help menu that comes up to find a function that starts with `file`, and describe what you think it does.
+
+***
+
+## Rmd file
+
+Use this to integrate text and R code into the same document.
+
+Create a new Rmd file. 
+
+*Practice with Rmd file*
+
+
+## Practice with variables
+
+Define a variable
+
+```{r}
+my_var <- 8
+```
+
+And another
+
+```{r}
+my_var2 <- 10
+```
+
+Work with vars
+
+```{r}
+my_var + my_var2
+```
+
+Make a new variable
+
+```{r}
+my_var_tot <- my_var + my_var2
+```
+
+**Challenge**
+
+Change the value of my_var2
+
+```{r}
+my_var2 <- 3
+```
+
+What is the value of `my_var_tot` now?
+
+### Make a vector
+
+Combining values into a vector
+
+```{r}
+# Vector of variables
+my_vect <- c(my_var, my_var2)
+
+# Numeric vector
+v1 <- c(10, 2, 8, 7, 11, 15)
+
+# Char vector
+pets <- c("cat", "dog", "rabbit", "pig")
+```
+
+Making a vector of numbers in sequence
+
+```{r}
+v2 <- 1:10
+v3 <- seq(from = 1, to = 10)
+```
+
+### More internal functions
+
+There are lots of functions that operate on vectors.
+
+```{r}
+mean(v1)
+sd(v1)
+```
+
+
+## Exploring variable elements
+
+You can get specific elements from vectors and other data structures
+
+* Introduction to the square brackets `[]`
+
+```{r}
+pets <- c("cat", "dog", "rabbit", "pig", "snake")
+pets[1]
+```
+
+* Getting a number of elements, in sequence
+
+```{r}
+pets[3:4]
+```
+
+* Getting a number of elements, not in sequence
+
+```{r}
+pets[c(1,4)]
+```
+
+## Data frames
+
+### Reading in your own data
+
+One of the most basic things you will need to do in R is read in your own data set. 
+You can read in Excel files, simple text files, and even files from Google Sheets.
+But the easiest type of file to read in is a comma separated values (CSV) file. 
+You can save an Excel workbook (or Numbers workbook or Google Sheet) as a CSV file by using the "Save as ..." menu item. 
+
+Let's read in the soil data from our Speed Data Science activity.
+
+```{r soil_data}
+soil_data <- read.csv("/Users/maiellolammens/Dropbox/Pace/Teaching/MAT-141-Intro-Stats-LifeSciences/MAT-141-FA19/Data-Sets/soil_p_data.csv")
+```
+
+
+Let's have a brief look at this data set.
+
+```{r}
+head(soil_data)
+tail(soil_data)
+```
+
+As we saw in our previous activity, these data include nutrient measurements at multiple different sites on a suburban campus. 
+The data set also includes information about the data samples were collected and the conditions of the site during collection.
+
+#### `summary` function
+
+Let's begin by using the `summary` function to examine this data set.
+`summary` returns many of the standard statistics.
+When doing data exploration, a few things you want to look at are:
+
+* How do the mean and median values within a variable compare?
+* Do the min and max values suggest there are outliers?
+* Which variables (i.e., columns) are quantitative (numeric) versus categorical (factors or characters)
+
+```{r}
+summary(soil_data)
+```
+
+### Navigating a `data.frame`
+
+We will be very brief here. 
+I recommend checking out 
+[this Data Carpentry lesson](http://www.datacarpentry.org/R-ecology/03-data-frames.html) for more information.
+
+* Looking at specific `data.frame` elements. Use the *row* and *column* notation.
+
+Here is the 5th row, 3rd column (Site).
+**Note: We are using square brackets to index the `data.frame` and we *always* use row, column notation.**
+
+```{r}
+soil_data[5, 3]
+```
+
+* Looking at an entire column.
+
+Here are two ways to get the `pH` column.
+
+First, **note: we leave the row part blank, but still add the comma.**
+
+```{r}
+soil_data[ ,5]
+```
+
+Second, **use only the variable (column) name. Note the use of the `$` operator**
+
+```{r}
+soil_data$pH
+```
+
+* Looking at specific column entry
+
+This is another way to look at the 5th entry in the `pH` column.
+
+```{r}
+soil_data$pH[5]
+```
+
+* Looking at all entries for a given row.
+
+Here's all the entries for the 5th row.
+**Note: here we leave the column part blank, but still add the comma.**
+
+```{r}
+soil_data[5, ]
+```
+
+* Looking at a set of rows and/or columns.
+
+Here's all the entries in the 5th through 10th rows, 4th through 6th columns.
+**Note: we use the `:` operator to look at a range of value.**
+
+```{r}
+soil_data[5:10, 4:6]
+```
+
+* For `data.frame`s, if you do not use row, column notation, you will get only the columns back.
+
+```{r}
+head(soil_data[4:6])
+```
+
+## Adding external packages
+
+We're going to learn about adding packages by adding the `ggplot2` package.
+`ggplot2` is very powerful add-on to plotting in R. 
+
+First you must install `ggplot2`:
+
+```{r, eval=FALSE}
+install.packages("ggplot2")
+```
+
+Then load it into your environment:
+
+```{r}
+library(ggplot2)
+```
+
+Now you have `ggplot2` functionality!
+
+## Data visualization with `ggplot`
+
+`ggplot` is designed to allow for layering of different plotting components.
+This means that the data specifications can be separated from the actuall plotting functions.
+
+```{r}
+ggplot(data = soil_data, aes(x = vegetation_type, y = phosphorus_lbacre)) +
+  geom_boxplot() +
+  theme_bw()
+```
+
+
+
+
+
+## Introduction
+
+One of the most important things you can do with any data analysis is write-up your work and share it with others. 
+During the course of this semester, we will learn how to apply many analysis techniques to research questions in the fields of life sciences.
+We will cover the statistical theory underlying these techniques and how to use the R software to carry out these analyses. 
+In this tutorial, we will go over one way to communicate your analyses carried out using R, the Rmarkdown file.
+
+### R Markdown
+
+
+
+
+```{r}
+# This is a test
+2+2
+```
+
+
+### Exercise 
+
+*Here's a simple exercise with an empty code chunk provided for entering the answer.*
+
+### Exercise with Code
+
+*Here's an exercise with some prepopulated code as well as `exercise.lines = 5` to provide a bit more initial room to work.*
+
+Now write a function that adds any two numbers and then call it:
+
+```{r add-function, exercise=TRUE, exercise.lines = 5}
+add <- function() {
+  
+}
+```
+
+## Topic 2
+
+### Exercise with Hint
+
+*Here's an exercise where the chunk is pre-evaulated via the `exercise.eval` option (so the user can see the default output we'd like them to customize). We also add a "hint" to the correct solution via the chunk immediate below labeled `print-limit-hint`.*
+
+Modify the following code to limit the number of rows printed to 5:
+
+```{r print-limit, exercise=TRUE, exercise.eval=TRUE}
+mtcars
+```
+
+```{r print-limit-hint}
+head(mtcars)
+```
+
+### Quiz
+
+*You can include any number of single or multiple choice questions as a quiz. Use the `question` function to define a question and the `quiz` function for grouping multiple questions together.*
+
+Some questions to verify that you understand the purposes of various base and recommended R packages:
+
+```{r quiz}
+quiz(
+  question("Which package contains functions for installing other R packages?",
+    answer("base"),
+    answer("tools"),
+    answer("utils", correct = TRUE),
+    answer("codetools")
+  ),
+  question("Which of the R packages listed below are used to create plots?",
+    answer("lattice", correct = TRUE),
+    answer("tools"),
+    answer("stats"),
+    answer("grid", correct = TRUE)
+  )
+)
+```
+

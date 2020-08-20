@@ -15,55 +15,59 @@ tutorial_options(exercise.checker = gradethis::grade_learnr)
 
 ## Learning outcomes
 
-At the end of today's class you should be able to:
+After completing this tutorial you should be able to:
 
 * Perform basic arithmetic using R/RStudio
 * Identify the major components of the RStudio interface
+* Define a new variable and assign a value to it
+* Understand the differences between variable types, including `numerics`, `charachters`, and `logicals` (or `booleans`)
+
 * Work with an [R Markdown](https://rmarkdown.rstudio.com/) file and use it to document a sequence of R functions
 * Read in a data set and perform basic data summary procedures in R
 
+### What is this document?
+
+This document is called a Tutorial. 
+It is using the `learnr` R package.
+In this tutorial, you will be able to run R code, submit examples of R code, and answer **brief** concept questions.
+When you have completed the tutorial, you will be asked to generate a **hash** code, and to submit that hash code to me as evidence that you completed the tutorial.
+
 ## Why do I have to learn to program in R?
 
-In short, it's "industry standard". 
-But the longer answer has to do with replicability of data analyses.
-Documenting your analysis in R, using R scripts or Rmd files, allows you to re-run your analysis whenever the need arises, and to share your analysis workflow with others.
+When dealing with analysis of today's data sets, it is impractical to perform analyses by hand, or even using a powerful calculator (such as a TI-85). 
+Most of us probably have experience working in a spread sheet program, like MS Excel, to do basic data analyses. 
+Spread sheets certainly have their place in statistical analyses (they're great for managing data), but are limited when it comes to performing analyses.
 
-## Difference between R and RStudio
+R is a software and computer programming language this was created to help scientists *do statistics*. 
+A key feature of R is that you can document your analysis in files called R scripts or R markdown (Rmd) files. 
+This allows you to re-run your analysis whenever the need arises, and to share your analysis work-flow with others.
+
+### Difference between R and RStudio
 
 In this class, we will be working primarily in RStudio.
 So what is the difference between R and RStudio?
-R is both a programming language (specifically a statsitical analysis programming language), while RStudio is an **Integrated Development Environment**, or **IDE** for short. 
+R is both a programming language (as noted above, specifically a statistical analysis programming language) and a software, while RStudio is an **Integrated Development Environment**, or **IDE** for short. 
 RStudio offers a number of features, mostly related to visual presentation of information, that make writing and working with R code easier.
 
-## Getting started
+## Review questions
 
-### Overall layout
+```{r quiz_why_r, echo=FALSE}
+quiz(
+  question("R is a programming language.",
+    answer("True", correct = TRUE),
+    answer("False")
+  ),
+  question("R and RStudio are the same thing.",
+    answer("True"),
+    answer("False", correct = TRUE)
+  ),
+  question("Reproducibility is a key component of scientific studies.",
+    answer("True", correct = TRUE),
+    answer("False")
+  )
+)
+```
 
-There are four panels in the RStudio interface (though you may only have three open when you first start it), each has valuable information.
-
-* Console / Terminal panel (lower-left)
-* Environment / History / Git (upper-right)
-* Files / Plots / Packages / Help (lower-right)
-* Source / Editor (upper-left)
-
-### File management
-
-Before we do anything in R/RStudio, let's make a new folder on our computers where our class data can reside.
-You can use your operating systems file manager (i.e., Finder on Mac and Windows Explorer on Windows) to created a new folder where ever suites you. 
-**Call this new folder `MAT-141-FA19`.**
-We'll use this folder/directory later when we are asked to set our 'working directory' and when we need a place to store `*.R` and `*.Rmd` files.
-
-See the screen shot below for an example of creating a new folder using Mac Finder.
-
-![](New-Folder.png)
-
-### Making an R Project
-
-Let's make a new R Project associated with your `MAT-141-FA19` directory. 
-It will become more clear why we are doing this later when we get to the Git lesson.
-To make a new project, got to the upper right-hand side of the RStudio interface, where it says **Project: (None)**.
-Click the little downward arrow, select "New Project", then select "Existing Directory" from the window that pops up. 
-Use the graphical user interface (GUI) to navigate to the `MAT-141-FA19` directory, then select "Create Project".
 
 ## Getting help
 
@@ -108,7 +112,9 @@ grade_result(
 
 ## Order of operations
 
-There's internal control for order of operations (Please Excuse My Dear Aunt Sally)
+There's internal control for order of operations, which follows the standard order of operations.
+What ever is in **Parentheses** is executed first, then **Exponents**, then **Multiplication**, then **Division**, then **Addition**, and then **Subtraction**. 
+(You may recall the PEM-DAS or Please Excuse My Dear Aunt Sally nomonic devises to remember this order.)
 
 ```{r}
 (3 * 5) + 7
@@ -131,7 +137,7 @@ Write your own example where adding parentheses matters.
 ## Internal functions
 
 There are a ton of internal functions, and a lot of add-ons.
-Here are examples of running three different functions.
+Here are examples of running three different functions in R.
 
 ```{r}
 sqrt(4)
@@ -166,49 +172,6 @@ quiz(
 )
 ```
 
-
-## R script file
-
-Use a script file for your work. It's easier to go back to and easy to document.
-
-**Important:** within an R file, you can use the # sign to add comments. Anything written after the # is *not* interpreted when you run the code.
-
-**Challenge**
-
-Create a new R script file in your `MAT-141-FA19` directory.
-
-***
-
-### Basic file managment in R (OPTIONAL)
-
-```{r}
-# What working directory am I in?
-getwd()
-
-# Move to a different director?
-setwd(".")
-```
-
-#### Things to cover
-
-* Navigating the file path
-* Tab completion of file paths
-* Tab completion of R commands
-
-**Challenge**
-
-* Try to auto-complete `fil`, what do you find?
-* Use the brief help menu that comes up to find a function that starts with `file`, and describe what you think it does.
-
-***
-
-## Rmd file
-
-Use this to integrate text and R code into the same document.
-
-Create a new Rmd file. 
-
-*Practice with Rmd file*
 
 
 ## Practice with variables

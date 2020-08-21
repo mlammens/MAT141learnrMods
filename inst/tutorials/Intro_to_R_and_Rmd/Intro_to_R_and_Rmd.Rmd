@@ -176,41 +176,82 @@ quiz(
 
 ## Practice with variables
 
-Define a variable
+In the work you've done so far, the results of these calculations have been printed out to the screen, but they have not been 'saved' so you can work with them further.
+We can define new **variables** and assign values to these variables to do just this.
+
+Let's being by defining a variable. 
+In the code chunk below, I'm defining a variable called `my_var` the value of 8.
+
 
 ```{r}
-my_var <- 8
+my_var = 8
 ```
 
-And another
+I could have called this variable anything I wanted to **as long as it didn't start with a number or a special character** (just stick to starting a variable name with letters).
+
+Here's another:
 
 ```{r}
-my_var2 <- 10
+my_var2 = 10
 ```
 
-Work with vars
+***
+**Side Note**
+
+You can assign a value to a variable with the `=` sign I used above **or** a `<-`, which is called the arrow operator. 
+I will try to use the `=` in these tutorials because I think this is easier for new users to understand, but I have been working in R for a long time and have always used `<-`, so I will likely slip up quite a bit.
+Apologies in advance.
+
+***
+
+Now you try defining a variable. 
+Start by assigning any numeric value to a variable.
+
+```{r variable, exercise = TRUE}
+
+```
+
+
+
+```{r variable-check}
+grade_result(
+  pass_if(~ is.numeric(.result)),
+  fail_if(~ TRUE, "Hmm, does your answer look something like this - `foo = 10`?")
+)
+
+```
+
+
+
+## Working with variables - 1
+
+We can use our defined variables to do more calculations.
+For example, here I add together `my_var` and `my_var2` that I defined on the previous page.
 
 ```{r}
 my_var + my_var2
 ```
 
-Make a new variable
+We can also make yet another variable using these variables. 
+Note that I'm using the `print` function to show the value of `my_var_tot` here.
 
 ```{r}
-my_var_tot <- my_var + my_var2
+my_var_tot = my_var + my_var2
+print(my_var_tot)
 ```
 
-**Challenge**
+Now you practice. Below is some code to define a few new variables. 
+Change the values and run the code to create a new value for `z`.
 
-Change the value of my_var2
-
-```{r}
-my_var2 <- 3
+```{r var_practice, exercise = TRUE}
+x = 8
+y = 2
+z = x + y
+print(z)
 ```
 
-What is the value of `my_var_tot` now?
 
-### Make a vector
+## Vectors
 
 Combining values into a vector
 
@@ -404,45 +445,6 @@ ggplot(data = soil_data, aes(x = vegetation_type, y = phosphorus_lbacre)) +
 
 
 
-## Introduction
-
-One of the most important things you can do with any data analysis is write-up your work and share it with others. 
-During the course of this semester, we will learn how to apply many analysis techniques to research questions in the fields of life sciences.
-We will cover the statistical theory underlying these techniques and how to use the R software to carry out these analyses. 
-In this tutorial, we will go over one way to communicate your analyses carried out using R, the Rmarkdown file.
-
-### R Markdown
-
-
-
-
-```{r}
-# This is a test
-2+2
-```
-
-
-### Exercise 
-
-*Here's a simple exercise with an empty code chunk provided for entering the answer.*
-
-### Exercise with Code
-
-*Here's an exercise with some prepopulated code as well as `exercise.lines = 5` to provide a bit more initial room to work.*
-
-Now write a function that adds any two numbers and then call it:
-
-```{r add-function, exercise=TRUE, exercise.lines = 5}
-add <- function() {
-  
-}
-```
-
-## Topic 2
-
-### Exercise with Hint
-
-*Here's an exercise where the chunk is pre-evaulated via the `exercise.eval` option (so the user can see the default output we'd like them to customize). We also add a "hint" to the correct solution via the chunk immediate below labeled `print-limit-hint`.*
 
 Modify the following code to limit the number of rows printed to 5:
 
@@ -454,28 +456,6 @@ mtcars
 head(mtcars)
 ```
 
-### Quiz
-
-*You can include any number of single or multiple choice questions as a quiz. Use the `question` function to define a question and the `quiz` function for grouping multiple questions together.*
-
-Some questions to verify that you understand the purposes of various base and recommended R packages:
-
-```{r quiz}
-quiz(
-  question("Which package contains functions for installing other R packages?",
-    answer("base"),
-    answer("tools"),
-    answer("utils", correct = TRUE),
-    answer("codetools")
-  ),
-  question("Which of the R packages listed below are used to create plots?",
-    answer("lattice", correct = TRUE),
-    answer("tools"),
-    answer("stats"),
-    answer("grid", correct = TRUE)
-  )
-)
-```
 
 ## Submit
 

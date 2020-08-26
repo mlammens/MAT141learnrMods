@@ -1,0 +1,378 @@
+---
+title: "Short Introduction to R"
+output: learnr::tutorial
+runtime: shiny_prerendered
+description: "A very short introduction to using R (mostly an intro to tutorials)."
+---
+
+```{r setup, include=FALSE}
+library(learnr)
+#knitr::opts_chunk$set(echo = FALSE)
+library(gradethis)
+
+tutorial_options(exercise.checker = gradethis::grade_learnr)
+```
+
+## Learning outcomes
+
+After completing this tutorial you should be able to:
+
+* Perform basic arithmetic using R/RStudio
+* Identify the major components of the RStudio interface
+* Define a new variable and assign a value to it
+* Understand the differences between variable types, including `numerics`, `charachters`, and `logicals` (or `booleans`)
+
+### What is this document?
+
+This document is called a Tutorial. 
+It is using the `learnr` R package.
+In this tutorial, you will be able to run R code, submit examples of R code, and answer **brief** concept questions.
+When you have completed the tutorial, you will be asked to generate a **hash** code, and to submit that hash code to me as evidence that you completed the tutorial.
+
+## Why do I have to learn to program in R?
+
+When dealing with analysis of today's data sets, it is impractical to perform analyses by hand, or even using a powerful calculator (such as a TI-85). 
+Most of us probably have experience working in a spread sheet program, like MS Excel, to do basic data analyses. 
+Spread sheets certainly have their place in statistical analyses (they're great for managing data), but are limited when it comes to performing analyses.
+
+R is a software and computer programming language this was created to help scientists *do statistics*. 
+A key feature of R is that you can document your analysis in files called R scripts or R markdown (Rmd) files. 
+This allows you to re-run your analysis whenever the need arises, and to share your analysis work-flow with others.
+
+### Difference between R and RStudio
+
+In this class, we will be working primarily in RStudio.
+So what is the difference between R and RStudio?
+R is both a programming language (as noted above, specifically a statistical analysis programming language) and a software, while RStudio is an **Integrated Development Environment**, or **IDE** for short. 
+RStudio offers a number of features, mostly related to visual presentation of information, that make writing and working with R code easier.
+
+## Review questions
+
+```{r quiz_why_r, echo=FALSE}
+quiz(
+  question("R is a programming language.",
+    answer("True", correct = TRUE),
+    answer("False")
+  ),
+  question("R and RStudio are the same thing.",
+    answer("True"),
+    answer("False", correct = TRUE)
+  ),
+  question("Reproducibility is a key component of scientific studies.",
+    answer("True", correct = TRUE),
+    answer("False")
+  )
+)
+```
+
+
+## Getting help
+
+* **Help** panel (lower right corner)
+* `help.search`
+
+```{r}
+help.search("bar plot")
+```
+
+**Challenge**
+
+Use the `help.search` function to search for something in statistics that you think should be in R? For example, "standard deviation" or "mean".
+
+```{r help_practice, exercise=TRUE}
+
+```
+
+
+## R as calculator
+
+We can use R just like any other calculator.
+
+```{r}
+3 + 5
+```
+
+Write the R code required to add two plus two:
+
+```{r two_plus_two, exercise=TRUE}
+
+```
+
+```{r two_plus_two-check}
+grade_result(
+  pass_if(~ identical(.result, 4)),
+  fail_if(~ TRUE, "Are you using the + operator? Make sure that you are!")
+)
+
+```
+
+
+## Order of operations
+
+There's internal control for order of operations, which follows the standard order of operations.
+What ever is in **Parentheses** is executed first, then **Exponents**, then **Multiplication**, then **Division**, then **Addition**, and then **Subtraction**. 
+(You may recall the PEM-DAS or Please Excuse My Dear Aunt Sally nomonic devises to remember this order.)
+
+```{r}
+(3 * 5) + 7
+```
+
+```{r}
+3 * 5 + 7
+```
+
+**Challenge**
+
+Write your own example where adding parentheses matters. 
+
+```{r pemdas_example, exercise=TRUE}
+
+```
+
+
+
+## Internal functions
+
+There are a ton of internal functions, and a lot of add-ons.
+Here are examples of running three different functions in R.
+
+```{r}
+sqrt(4)
+
+abs(-5)
+
+c(-5, 3, 7, 9, -1)
+```
+
+Identify what each of the functions above does.
+
+```{r quiz_functions, echo=FALSE}
+quiz(
+  question("What does `sqrt` do?",
+    answer("divides a number by two"),
+    answer("squirts water at a number"),
+    answer("calculates the square-root of a number", correct = TRUE),
+    answer("calculates the square of a number")
+  ),
+  question("What does `abs` do?",
+    answer("returns the absolute value of a number", correct = TRUE),
+    answer("calculates the square-root of a number"),
+    answer("nothing, as far as I can tell."),
+    answer("I don't know. Go ask your anatomy teacher what abs do.")
+  ),
+  question("What does the `c` function do? (Yes! `c` is a function!)",
+    answer("prints numbers to the output"),
+    answer("orders a set of numbers"),
+    answer("**combines** values into a vector or list of numbers", correct = TRUE),
+    answer("shortens a list of numbers")
+  )
+)
+```
+
+
+
+## Practice with variables
+
+In the work you've done so far, the results of these calculations have been printed out to the screen, but they have not been 'saved' so you can work with them further.
+We can define new **variables** and assign values to these variables to do just this.
+
+Let's being by defining a variable. 
+In the code chunk below, I'm defining a variable called `my_var` the value of 8.
+
+
+```{r}
+my_var = 8
+```
+
+I could have called this variable anything I wanted to **as long as it didn't start with a number or a special character** (just stick to starting a variable name with letters).
+
+Here's another:
+
+```{r}
+my_var2 = 10
+```
+
+***
+**Side Note**
+
+You can assign a value to a variable with the `=` sign I used above **or** a `<-`, which is called the arrow operator. 
+I will try to use the `=` in these tutorials because I think this is easier for new users to understand, but I have been working in R for a long time and have always used `<-`, so I will likely slip up quite a bit.
+Apologies in advance.
+
+***
+
+Now you try defining a variable. 
+Start by assigning any numeric value to a variable.
+
+```{r variable, exercise = TRUE}
+
+```
+
+
+
+```{r variable-check}
+grade_result(
+  pass_if(~ is.numeric(.result)),
+  fail_if(~ TRUE, "Hmm, does your answer look something like this - `foo = 10`?")
+)
+
+```
+
+
+
+## Working with variables
+
+We can use our defined variables to do more calculations.
+For example, here I add together `my_var` and `my_var2` that I defined on the previous page.
+
+```{r}
+my_var + my_var2
+```
+
+We can also make yet another variable using these variables. 
+Note that I'm using the `print` function to show the value of `my_var_tot` here.
+
+```{r}
+my_var_tot = my_var + my_var2
+print(my_var_tot)
+```
+
+Now you practice. Below is some code to define a few new variables. 
+Change the values and run the code to create a new value for `z`.
+
+```{r var_practice, exercise = TRUE}
+x = 8
+y = 2
+z = x + y
+print(z)
+```
+
+
+## Vectors
+
+Combining values into a vector
+
+```{r}
+# Vector of variables
+my_vect <- c(my_var, my_var2)
+
+# Numeric vector
+v1 <- c(10, 2, 8, 7, 11, 15)
+
+# Char vector
+pets <- c("cat", "dog", "rabbit", "pig")
+```
+
+Making a vector of numbers in sequence
+
+```{r}
+v2 <- 1:10
+v3 <- seq(from = 1, to = 10)
+```
+
+### More internal functions
+
+There are lots of functions that operate on vectors.
+
+```{r}
+mean(v1)
+sd(v1)
+```
+
+Try running `mean` and `sd` on the vector `v2`
+
+```{r vect_mean_sd, exercise = TRUE}
+
+```
+
+```{r vect_mean_sd-solution}
+mean(v2)
+sd(v2)
+```
+
+
+## Exploring variable elements
+
+You can get specific elements from vectors and other data structures
+
+* Introduction to the square brackets `[]`
+
+```{r}
+pets <- c("cat", "dog", "rabbit", "pig", "snake")
+pets[1]
+```
+
+* Getting a number of elements, in sequence
+
+```{r}
+pets[3:4]
+```
+
+* Getting a number of elements, not in sequence
+
+```{r}
+pets[c(1,4)]
+```
+
+Thinking back to the `v1` vector, how would you use indexing and the `mean` function to get the mean of the first four values of `v1`?
+
+```{r index_mean, exercise = TRUE}
+
+```
+
+```{r index_mean-solution}
+mean(v1[1:4])
+```
+
+
+## Data frames
+
+### Reading in your own data
+
+One of the most basic things you will need to do in R is read in your own data set. 
+You can read in Excel files, simple text files, and even files from Google Sheets.
+But the easiest type of file to read in is a comma separated values (CSV) file. 
+You can save an Excel workbook (or Numbers workbook or Google Sheet) as a CSV file by using the "Save as ..." menu item. 
+
+Let's read in the soil data from our first class.
+
+```{r soil_data}
+#soil_data <- read.csv("https://www.dropbox.com/s/onmcvqffnd8u3ae/soil_p_data.csv?dl=1")
+soil_data <- read.csv(system.file("extdata", "soil_p_data.csv", package = "MAT141learnrMods"))
+```
+
+
+Let's have a brief look at this data set.
+
+```{r}
+head(soil_data)
+tail(soil_data)
+```
+
+As we saw in our previous activity, these data include nutrient measurements at multiple different sites on a suburban campus. 
+The data set also includes information about the data samples were collected and the conditions of the site during collection.
+
+#### `summary` function
+
+Let's begin by using the `summary` function to examine this data set.
+`summary` returns many of the standard statistics.
+When doing data exploration, a few things you want to look at are:
+
+* How do the mean and median values within a variable compare?
+* Do the min and max values suggest there are outliers?
+* Which variables (i.e., columns) are quantitative (numeric) versus categorical (factors or characters)
+
+```{r}
+summary(soil_data)
+```
+
+
+## Submit
+
+```{r context="server"}
+learnrhash::encoder_logic()
+```
+
+```{r encode, echo=FALSE}
+learnrhash::encoder_ui(ui_before = learnrhash::default_ui(url="https://docs.google.com/forms/d/e/1FAIpQLSestyyw9n4wMFrSchlu3F5OgoT-gx5ZMOpNNWh-6u1I5ZlVPQ/viewform?usp=sf_link"))
+```

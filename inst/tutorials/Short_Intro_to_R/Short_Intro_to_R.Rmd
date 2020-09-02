@@ -18,9 +18,8 @@ tutorial_options(exercise.checker = gradethis::grade_learnr)
 After completing this tutorial you should be able to:
 
 * Perform basic arithmetic using R/RStudio
-* Identify the major components of the RStudio interface
 * Define a new variable and assign a value to it
-* Understand the differences between variable types, including `numerics`, `charachters`, and `logicals` (or `booleans`)
+* Examine a summary of a data frame imported into the R environment
 
 ### What is this document?
 

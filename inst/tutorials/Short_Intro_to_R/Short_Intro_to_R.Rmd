@@ -253,20 +253,20 @@ Combining values into a vector
 
 ```{r}
 # Vector of variables
-my_vect <- c(my_var, my_var2)
+my_vect = c(my_var, my_var2)
 
 # Numeric vector
-v1 <- c(10, 2, 8, 7, 11, 15)
+v1 = c(10, 2, 8, 7, 11, 15)
 
 # Char vector
-pets <- c("cat", "dog", "rabbit", "pig")
+pets = c("cat", "dog", "rabbit", "pig")
 ```
 
 Making a vector of numbers in sequence
 
 ```{r}
-v2 <- 1:10
-v3 <- seq(from = 1, to = 10)
+v2 = 1:10
+v3 = seq(from = 1, to = 10)
 ```
 
 ### More internal functions
@@ -281,10 +281,11 @@ sd(v1)
 Try running `mean` and `sd` on the vector `v2`
 
 ```{r vect_mean_sd, exercise = TRUE}
-
+v2 = 1:10
 ```
 
 ```{r vect_mean_sd-solution}
+v2 = 1:10
 mean(v2)
 sd(v2)
 ```
@@ -297,7 +298,7 @@ You can get specific elements from vectors and other data structures
 * Introduction to the square brackets `[]`
 
 ```{r}
-pets <- c("cat", "dog", "rabbit", "pig", "snake")
+pets = c("cat", "dog", "rabbit", "pig", "snake")
 pets[1]
 ```
 
@@ -316,10 +317,12 @@ pets[c(1,4)]
 Thinking back to the `v1` vector, how would you use indexing and the `mean` function to get the mean of the first four values of `v1`?
 
 ```{r index_mean, exercise = TRUE}
+v1 = c(10, 2, 8, 7, 11, 15)
 
 ```
 
 ```{r index_mean-solution}
+v1 = c(10, 2, 8, 7, 11, 15)
 mean(v1[1:4])
 ```
 
@@ -336,8 +339,8 @@ You can save an Excel workbook (or Numbers workbook or Google Sheet) as a CSV fi
 Let's read in the soil data from our first class.
 
 ```{r soil_data}
-#soil_data <- read.csv("https://www.dropbox.com/s/onmcvqffnd8u3ae/soil_p_data.csv?dl=1")
-soil_data <- read.csv(system.file("extdata", "soil_p_data.csv", package = "MAT141learnrMods"))
+#soil_data = read.csv("https://www.dropbox.com/s/onmcvqffnd8u3ae/soil_p_data.csv?dl=1")
+soil_data = read.csv(system.file("extdata", "soil_p_data.csv", package = "MAT141learnrMods"))
 ```
 
 
